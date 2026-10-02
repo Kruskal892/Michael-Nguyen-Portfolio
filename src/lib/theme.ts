@@ -1,0 +1,2 @@
+// Runs before paint so a saved dark preference does not flash a light page.
+export const themeScript = `(function(){var root=document.documentElement;var media=window.matchMedia('(prefers-color-scheme: dark)');function saved(){try{return localStorage.getItem('portfolio-theme')}catch(e){return null}}function apply(){var value=saved();root.dataset.theme=value==='light'||value==='dark'?value:media.matches?'dark':'light'}apply();media.addEventListener('change',apply);window.addEventListener('storage',function(e){if(e.key==='portfolio-theme')apply()})})();`;
