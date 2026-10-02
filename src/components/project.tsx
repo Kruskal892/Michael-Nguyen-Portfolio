@@ -10,6 +10,7 @@ import {
   ChartNoAxesCombined,
 } from 'lucide-react';
 import type { Project } from '@/data/portfolio';
+import { RowDecoration } from '@/components/row-decoration';
 
 export function ProjectLinks({ project }: { project: Project }) {
   return (
@@ -81,6 +82,7 @@ export function ProjectCard({
         <p>{project.role}</p>
         {project.team && <p>Team of {project.team}</p>}
       </div>
+      <RowDecoration index={index} />
     </article>
   );
 }

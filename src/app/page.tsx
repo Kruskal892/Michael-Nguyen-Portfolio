@@ -16,6 +16,7 @@ import {
 import { TypedIntro } from '@/components/typed-intro';
 import { DepthCard } from '@/components/depth-card';
 import { SectionScene } from '@/components/section-scene';
+import { RowDecoration } from '@/components/row-decoration';
 import { TechnologyLogos } from '@/components/technology-logos';
 import { BrandIcon } from '@/components/brand-icon';
 import {
@@ -154,7 +155,7 @@ export default function Home() {
           </p>
         </div>
         <div className="experience-list">
-          {experience.map((job) => (
+          {experience.map((job, index) => (
             <article key={job.company} className="experience-row">
               <div className="job-company">
                 <h3>{job.company}</h3>
@@ -163,7 +164,10 @@ export default function Home() {
                 <h4>{job.role}</h4>
                 <p>{job.description}</p>
               </div>
-              <p className="job-date">{job.dates}</p>
+              <div className="job-meta">
+                <p className="job-date">{job.dates}</p>
+              </div>
+              <RowDecoration index={index + projects.length} />
             </article>
           ))}
         </div>
@@ -214,12 +218,34 @@ export default function Home() {
         </div>
         <div className="education-grid">
           <article className="degree">
-            <GraduationCap className="education-icon" size={32} />
-            <p className="eyebrow">Education</p>
-            <h3>{education.institution}</h3>
-            <p className="degree-title">{education.degree}</p>
-            <p>{education.dates}</p>
-            <p>Specialization: {education.specialization}</p>
+            <div className="degree-overview">
+              <GraduationCap className="education-icon" size={32} />
+              <p className="eyebrow">Education</p>
+              <h3>{education.institution}</h3>
+              <p className="degree-title">{education.degree}</p>
+              <p>{education.dates}</p>
+              <p>Specialization: {education.specialization}</p>
+            </div>
+            <div className="degree-coursework">
+              <p className="group-label">Relevant Coursework</p>
+              <ul className="degree-course-list">
+                {education.coursework
+                  .replace(/\.$/, '')
+                  .split(', ')
+                  .map((course) => (
+                    <li key={course}>{course}</li>
+                  ))}
+              </ul>
+            </div>
+            <div className="degree-awards">
+              <Sparkles size={16} className="degree-awards-icon" />
+              <div>
+                <p className="group-label">Honors &amp; Awards</p>
+                <p className="degree-awards-detail">
+                  {awards.count} Academic Scholarships — {awards.institution}
+                </p>
+              </div>
+            </div>
           </article>
           <article className="certifications">
             <p className="eyebrow">Certifications</p>
@@ -229,28 +255,23 @@ export default function Home() {
                 <h3>{cert.name}</h3>
                 <p>{cert.issuer}</p>
                 {cert.detail && <p className="small">{cert.detail}</p>}
+                {'courses' in cert &&
+                  (
+                    cert as {
+                      courses: { group: string; items: string[] }[];
+                    }
+                  ).courses.map((cat) => (
+                    <div key={cat.group} className="cert-group">
+                      <p className="group-label">{cat.group}</p>
+                      <ul className="cert-course-list">
+                        {cat.items.map((course) => (
+                          <li key={course}>{course}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
               </div>
             ))}
-          </article>
-          <article className="coursework-card">
-            <Code2 className="education-icon" size={24} />
-            <p className="eyebrow">Software Engineering</p>
-            <h3>Relevant coursework</h3>
-            <ul>
-              {education.coursework
-                .replace(/\.$/, '')
-                .split(', ')
-                .map((course) => (
-                  <li key={course}>{course}</li>
-                ))}
-            </ul>
-          </article>
-          <article className="awards">
-            <Sparkles size={24} className="education-icon" />
-            <p className="eyebrow">Honors & awards</p>
-            <h3>Academic Scholarships</h3>
-            <p>{awards.institution}</p>
-            <p>{awards.count} scholarships</p>
           </article>
         </div>
       </section>

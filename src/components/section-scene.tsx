@@ -1,6 +1,48 @@
-export function SectionScene({ variant }: { variant: 'orb' | 'cube' | 'rings' }) {
+import { siReact, siTypescript } from 'simple-icons';
+
+export function SectionScene({
+  variant,
+  decoration,
+}: {
+  variant: 'orb' | 'cube' | 'rings';
+  decoration?: 'projects' | 'experience';
+}) {
   return (
-    <div className={`section-scene scene-${variant}`} aria-hidden="true">
+    <div
+      className={`section-scene scene-${variant}${decoration ? ` scene-${decoration}` : ''}`}
+      aria-hidden="true"
+    >
+      {decoration && (
+        <>
+          <div className="section-satellite satellite-space">
+            {decoration === 'projects' ? (
+              <div className="scene-spaceship">
+                <svg viewBox="0 0 80 100" fill="none">
+                  <path className="ship-wing" d="M28 48 9 76l21-5m22-23 19 28-21-5" />
+                  <path className="ship-body" d="M40 8C24 26 24 49 30 75h20c6-26 6-49-10-67Z" />
+                  <circle className="ship-window" cx="40" cy="39" r="8" />
+                  <path className="ship-flame" d="m33 80 7 15 7-15" />
+                  <path d="M40 8v14M30 69h20" />
+                </svg>
+              </div>
+            ) : (
+              <div className="scene-planet">
+                <i />
+                <span />
+              </div>
+            )}
+          </div>
+          <div
+            className={`section-satellite satellite-logo ${decoration === 'projects' ? 'satellite-react' : 'satellite-ts'}`}
+          >
+            <div className="scene-logo-tile">
+              <svg viewBox="0 0 24 24">
+                <path d={(decoration === 'projects' ? siReact : siTypescript).path} />
+              </svg>
+            </div>
+          </div>
+        </>
+      )}
       <div className="section-scene-grid" />
       <div className="section-geometry">
         {variant === 'cube' ? (

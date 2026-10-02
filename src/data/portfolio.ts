@@ -348,9 +348,37 @@ export const certifications = [
     detail: 'Issued January 2026 · Expires January 2029 · Credential ID: 170671964',
   },
   {
-    name: 'Claude Academy: Claude 101, Claude Code 101, AI Fluency: Framework and foundations',
+    name: 'Claude Academy Certifications',
     issuer: 'Anthropic',
     detail: 'October 2026',
+    courses: [
+      {
+        group: 'Agentic & Development',
+        items: [
+          'Model Context Protocol (MCP) Advanced',
+          'Claude Code in Action',
+          'Claude Code 101',
+          'Human-Agent Teams',
+        ],
+      },
+      {
+        group: 'Platform & Architecture',
+        items: [
+          'Claude Platform 101',
+          'Claude Tag',
+          'Claude Cowork',
+          'Enterprise Deployment & Rollout Strategy',
+        ],
+      },
+      {
+        group: 'AI Foundations',
+        items: [
+          'AI Fluency: Framework and Foundations',
+          'Capabilities and Limitations',
+          'Claude 101',
+        ],
+      },
+    ],
   },
 ];
 export const awards = { institution: 'Hanoi University', count: 4 };

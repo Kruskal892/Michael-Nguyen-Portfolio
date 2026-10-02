@@ -508,6 +508,48 @@ h2 {
 .coursework {
   margin-top: 19px !important;
 }
+.degree-coursework {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+.degree-coursework .group-label {
+  margin-bottom: 10px;
+}
+.degree-course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+}
+.degree-course-list li {
+  font-size: 11px;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 10px;
+}
+.degree-awards {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.degree-awards-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.degree .degree-awards .group-label {
+  margin-top: 0;
+  margin-bottom: 4px;
+  color: var(--accent);
+}
+.degree .degree-awards-detail {
+  font-size: 12px;
+  color: var(--ink);
+}
 .certifications h3,
 .awards h3 {
   font-size: 13px;
@@ -526,6 +568,33 @@ h2 {
 .certifications .small {
   font-size: 10px;
   margin-top: 5px;
+}
+.cert-group {
+  margin-top: 12px;
+}
+.cert-group .group-label {
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  color: var(--accent);
+  font-size: 10px;
+}
+.cert-course-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.cert-course-list li {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.65;
+  border-left: 2px solid var(--line);
+  padding-left: 10px;
+  overflow-wrap: anywhere;
 }
 .awards {
   border-top: 1px solid var(--line);
@@ -2630,7 +2699,7 @@ body {
 .education-grid {
   grid-template-columns: 0.95fr 1.2fr;
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 .degree {
   padding: 30px;
@@ -2769,6 +2838,9 @@ body {
   }
   .degree h3 {
     font-size: 22px;
+  }
+  .degree-course-list {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 360px) {
@@ -3061,9 +3133,8 @@ body {
 }
 .section-heading {
   position: relative;
-  min-height: 100px;
+
   align-items: center;
-  padding-right: 190px;
 }
 .section-heading > p {
   max-width: 230px;
@@ -3086,17 +3157,13 @@ body {
 .contact-section .section-scene {
   opacity: 0.8;
 }
-.contact-section > .contact-heading {
-  min-height: 90px;
-  padding-right: 180px;
-}
 .education-grid {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr);
   gap: 20px;
 }
 .education-grid > article {
   margin: 0;
-  height: 100%;
+  min-width: 0;
   border: 1px solid var(--line);
   background: var(--surface);
   border-radius: 14px;
@@ -3105,7 +3172,8 @@ body {
 .degree {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 24px;
   min-height: 320px;
 }
 .degree .education-icon {
@@ -3157,9 +3225,6 @@ body {
   margin-bottom: 8px;
 }
 @media (max-width: 900px) {
-  .section-heading {
-    padding-right: 150px;
-  }
   .section-geometry {
     width: 155px;
     height: 155px;
@@ -3178,9 +3243,7 @@ body {
 }
 @media (max-width: 700px) {
   .section-heading {
-    min-height: 110px;
-    justify-content: center;
-    padding-right: 115px;
+    justify-content: space-between;
   }
   .section-geometry {
     width: 140px;
@@ -3215,6 +3278,9 @@ body {
   .education-grid {
     grid-template-columns: 1fr;
   }
+  .cert-course-list {
+    grid-template-columns: 1fr;
+  }
   .degree {
     min-height: 260px;
   }
@@ -3223,10 +3289,6 @@ body {
   }
   .coursework-card ul {
     grid-template-columns: 1fr 1fr;
-  }
-  .contact-section > .contact-heading {
-    padding-right: 85px;
-    min-height: 100px;
   }
   .contact-heading h2 {
     font-size: 33px;
@@ -3299,16 +3361,8 @@ body {
 .section-scene > svg {
   display: none;
 }
-.section-heading {
-  min-height: 120px;
-  padding-right: 185px;
-}
 .project-row {
   background: transparent;
-}
-.contact-section > .contact-heading {
-  padding-right: 180px;
-  min-height: 105px;
 }
 @media (max-width: 700px) {
   .section-scene,
@@ -3335,14 +3389,6 @@ body {
     top: 84px;
     left: 6px;
     font-size: 9px;
-  }
-  .section-heading {
-    padding-right: 110px;
-    min-height: 110px;
-  }
-  .contact-section > .contact-heading {
-    padding-right: 105px;
-    min-height: 105px;
   }
   .contact-heading h2 {
     font-size: 30px;
@@ -3413,5 +3459,515 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .technology-logos li:hover .technology-logo {
     transform: none;
+  }
+}
+
+/* Floating space and technology decorations. */
+.section-scene.scene-projects,
+.section-scene.scene-experience {
+  width: 320px;
+  height: 140px;
+}
+.scene-projects .section-code,
+.scene-experience .section-code {
+  display: none;
+}
+.section-satellite {
+  position: absolute;
+  width: 76px;
+  height: 90px;
+  top: 28px;
+  perspective: 600px;
+}
+.satellite-space {
+  left: 6px;
+}
+.satellite-logo {
+  left: 108px;
+  top: 42px;
+  width: 64px;
+  height: 64px;
+}
+.scene-spaceship,
+.scene-planet,
+.scene-logo-tile {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: section-satellite-float 9s ease-in-out infinite;
+}
+.scene-spaceship {
+  transform: rotate(-24deg);
+}
+.scene-spaceship svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.scene-spaceship .ship-body,
+.scene-spaceship .ship-wing {
+  fill: color-mix(in srgb, var(--accent) 12%, var(--bg));
+}
+.scene-spaceship .ship-window {
+  fill: color-mix(in srgb, var(--accent) 35%, var(--bg));
+}
+.scene-spaceship .ship-flame {
+  stroke: #d19b55;
+}
+.scene-logo-tile {
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    var(--surface),
+    color-mix(in srgb, var(--accent) 12%, var(--bg))
+  );
+  box-shadow: 5px 6px 0 color-mix(in srgb, var(--accent) 10%, transparent);
+  animation-delay: -3s;
+}
+.scene-logo-tile svg {
+  width: 38px;
+  height: 38px;
+  fill: currentColor;
+}
+.satellite-react {
+  color: #3996b0;
+}
+.satellite-ts {
+  color: #3178c6;
+}
+.scene-planet {
+  animation-delay: -6s;
+}
+.scene-planet i {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  top: 16px;
+  left: 11px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: radial-gradient(
+    circle at 30% 25%,
+    var(--surface),
+    color-mix(in srgb, var(--accent) 40%, var(--bg)) 75%
+  );
+}
+.scene-planet span {
+  position: absolute;
+  inset: 25px -5px;
+  border: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius: 50%;
+  transform: rotate(-28deg) rotateX(58deg);
+}
+@keyframes section-satellite-float {
+  0%,
+  100% {
+    transform: translateY(3px) rotateX(12deg) rotateY(-18deg) rotateZ(-12deg);
+  }
+  50% {
+    transform: translateY(-5px) rotateX(-10deg) rotateY(18deg) rotateZ(-4deg);
+  }
+}
+@media (max-width: 700px) {
+  .section-scene.scene-projects,
+  .section-scene.scene-experience {
+    width: 280px;
+    max-width: 100%;
+    height: 115px;
+    top: 20px;
+  }
+  .section-satellite {
+    top: 8px;
+    width: 64px;
+    height: 78px;
+  }
+  .satellite-logo {
+    top: 24px;
+    left: 94px;
+    width: 54px;
+    height: 54px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene-spaceship,
+  .scene-planet,
+  .scene-logo-tile {
+    animation: none;
+  }
+}
+
+/* Keep decorations behind content without reserving layout space. */
+.section-scene.scene-projects,
+.section-scene.scene-experience {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+#projects > .project-grid,
+#experience > .experience-list {
+  position: relative;
+
+  background: var(--bg);
+}
+.scene-projects .satellite-space,
+.scene-experience .satellite-space {
+  left: 0;
+  top: 3px;
+}
+.scene-projects .satellite-logo,
+.scene-experience .satellite-logo {
+  left: auto;
+  right: 8px;
+  top: 3px;
+}
+.scene-projects .section-satellite,
+.scene-experience .section-satellite {
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+}
+@media (max-width: 700px) {
+  .scene-projects .section-satellite,
+  .scene-experience .section-satellite {
+    width: 24px;
+    height: 24px;
+  }
+  .scene-projects .satellite-logo,
+  .scene-experience .satellite-logo {
+    right: 0;
+    height: 24px;
+  }
+  .section-satellite .scene-logo-tile {
+    border-radius: 7px;
+  }
+  .section-satellite .scene-logo-tile svg {
+    width: 20px;
+    height: 20px;
+  }
+  .section-satellite .scene-planet i {
+    width: 25px;
+    height: 25px;
+    top: 6px;
+    left: 3px;
+  }
+  .section-satellite .scene-planet span {
+    inset: 9px -2px;
+  }
+}
+#projects .project-row > *,
+#experience .experience-row > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Keep the satellites visible in the existing space above section copy. */
+.section-scene,
+.contact-section .section-scene {
+  opacity: 1;
+}
+.section-satellite .scene-logo-tile {
+  border-radius: 7px;
+}
+.section-satellite .scene-logo-tile svg {
+  width: 22px;
+  height: 22px;
+}
+.section-satellite .scene-planet i {
+  width: 24px;
+  height: 24px;
+  top: 4px;
+  left: 4px;
+}
+.section-satellite .scene-planet span {
+  inset: 8px -2px;
+}
+.section-satellite path {
+  stroke-dasharray: none;
+  animation: none;
+}
+/* Varied row compositions stay within the existing metadata column. */
+.row-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 140px;
+  height: 88px;
+  margin-top: 22px;
+  color: var(--accent);
+  pointer-events: none;
+  perspective: 700px;
+}
+.row-motif {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 60px;
+  flex: none;
+  animation: row-motif-drift var(--motif-duration) ease-in-out infinite;
+  animation-delay: var(--motif-delay);
+}
+.row-motif svg {
+  width: 100%;
+  height: 100%;
+}
+.row-motif.scene-spaceship {
+  height: 72px;
+}
+.motif-logo {
+  width: 44px;
+  height: 44px;
+  filter: drop-shadow(3px 5px 0 color-mix(in srgb, currentColor 12%, transparent));
+}
+.motif-typescript {
+  color: #3178c6;
+}
+.motif-react {
+  color: #3996b0;
+}
+.motif-node {
+  color: #508947;
+}
+.motif-git {
+  color: #d4674e;
+}
+.motif-docker {
+  color: #348cbd;
+}
+.motif-diamond,
+.motif-hexagon {
+  color: #9b7caf;
+}
+.motif-sparkles {
+  color: #bd9052;
+  width: 28px;
+}
+.arrangement-center {
+  justify-content: center;
+}
+.arrangement-center .row-motif {
+  width: 62px;
+  height: 62px;
+}
+.arrangement-cluster {
+  justify-content: flex-end;
+  gap: 8px;
+}
+.arrangement-cluster .row-motif:last-child {
+  width: 30px;
+  height: 30px;
+  align-self: flex-start;
+}
+.arrangement-reverse {
+  flex-direction: row-reverse;
+}
+.arrangement-spread .row-motif:last-child {
+  align-self: flex-end;
+}
+.project-side .row-decoration {
+  margin-left: auto;
+}
+.job-meta {
+  grid-column: 1;
+  grid-row: 2;
+}
+@keyframes row-motif-drift {
+  0%,
+  100% {
+    transform: translateY(3px) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(7deg);
+  }
+}
+@media (max-width: 700px) {
+  .project-side .row-decoration {
+    margin-left: 0;
+    flex-basis: 100%;
+    justify-content: flex-start;
+    gap: 24px;
+  }
+  .job-meta .row-decoration {
+    margin-top: 12px;
+  }
+  .row-decoration {
+    height: 58px;
+    margin-top: 8px;
+  }
+  .row-motif,
+  .row-motif.scene-spaceship {
+    width: 40px;
+    height: 48px;
+  }
+  .arrangement-center .row-motif {
+    width: 48px;
+    height: 48px;
+  }
+  .motif-logo {
+    width: 34px;
+    height: 34px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .row-motif {
+    animation: none;
+  }
+}
+/* Floating row art uses measured whitespace and never contributes to row height. */
+.project-row,
+.experience-row {
+  position: relative;
+}
+.project-row > .row-decoration,
+.experience-row > .row-decoration {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+.row-decoration .row-motif {
+  position: absolute;
+  visibility: hidden;
+}
+/* Let the rotating 3D shapes extend beyond their small scene boxes. */
+.section-scene,
+.contact-section .section-scene {
+  overflow: visible;
+}
+/* Header sculptures stay at the right edge, with room for their full rotation. */
+.section-scene,
+.contact-section .section-scene {
+  top: -8px;
+  right: 0;
+  z-index: 0;
+}
+@media (max-width: 700px) {
+  .section-scene,
+  .contact-section .section-scene {
+    right: 0;
+    top: 0;
+    transform: scale(0.7);
+    transform-origin: top right;
+  }
+}
+/* Unfilled 3D line sculptures; the inner object rotates within a safe outer box. */
+.wireframe {
+  color: var(--muted);
+}
+.wireframe-spin {
+  position: absolute;
+  inset: 22%;
+  transform-style: preserve-3d;
+  animation: ambient-revolve 26s linear infinite;
+  animation-delay: var(--motif-delay);
+}
+.wireframe-spin i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid currentColor;
+  background: none;
+}
+.wire-meridian,
+.wire-equator,
+.wire-planet-ring {
+  border-radius: 50%;
+}
+.wire-equator {
+  transform: rotateX(90deg);
+}
+.wireframe-spin .wire-planet-ring {
+  inset: -26%;
+  transform: rotateX(65deg);
+}
+.wireframe-cube .wireframe-spin {
+  inset: 25%;
+}
+.wire-front {
+  transform: translateZ(0.25em);
+}
+.wire-back {
+  transform: rotateY(180deg) translateZ(0.25em);
+}
+.wire-left {
+  transform: rotateY(-90deg) translateZ(0.25em);
+}
+.wire-right {
+  transform: rotateY(90deg) translateZ(0.25em);
+}
+.wire-top {
+  transform: rotateX(90deg) translateZ(0.25em);
+}
+.wire-bottom {
+  transform: rotateX(-90deg) translateZ(0.25em);
+}
+.row-motif.wireframe {
+  font-size: 42px;
+}
+.row-motif.scene-spaceship {
+  color: var(--muted);
+}
+.row-motif.scene-spaceship svg {
+  stroke: currentColor;
+}
+.row-motif.scene-spaceship svg path,
+.row-motif.scene-spaceship svg circle {
+  fill: none;
+  stroke: currentColor;
+}
+@media (max-width: 700px) {
+  .row-motif.wireframe {
+    font-size: 28px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wireframe-spin {
+    animation: none;
+  }
+}
+/* Make line sculptures legible at the same visual scale as the remaining logos. */
+.wireframe {
+  color: var(--ink);
+}
+.wireframe-spin {
+  inset: 12%;
+}
+.wireframe-spin i {
+  border-width: 1.4px;
+}
+.wireframe-cube .wireframe-spin {
+  inset: 22%;
+}
+.wire-front {
+  transform: translateZ(0.28em);
+}
+.wire-back {
+  transform: rotateY(180deg) translateZ(0.28em);
+}
+.wire-left {
+  transform: rotateY(-90deg) translateZ(0.28em);
+}
+.wire-right {
+  transform: rotateY(90deg) translateZ(0.28em);
+}
+.wire-top {
+  transform: rotateX(90deg) translateZ(0.28em);
+}
+.wire-bottom {
+  transform: rotateX(-90deg) translateZ(0.28em);
+}
+.wireframe-planet .wireframe-spin {
+  inset: 23%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wireframe-spin {
+    transform: rotateX(-24deg) rotateY(35deg) rotateZ(12deg);
   }
 }
