@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { projects } from '../src/data/portfolio';
+import { certifications, projects } from '../src/data/portfolio';
 test('portrait loads and interactive depth respects reduced motion', async ({ page }) => {
   await page.goto('/');
   const portrait = page.getByRole('img', { name: 'Portrait of Nguyen Duc Anh Minh' });
@@ -30,7 +30,8 @@ test('desktop content, project routes, keyboard access, and SEO assets', async (
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/#main-content/);
   await expect(page.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/cv.pdf');
-  await expect(page.locator('.education-grid > article')).toHaveCount(4);
+  await expect(page.locator('.recognition-layout > .degree')).toHaveCount(1);
+  await expect(page.locator('.certification-card')).toHaveCount(certifications.length);
   await expect(page.locator('.section-scene')).toHaveCount(5);
   await expect(page.locator('.space-field')).toHaveCount(0);
   const cv = await page.request.get('/cv.pdf');

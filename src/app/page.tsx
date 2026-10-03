@@ -216,7 +216,7 @@ export default function Home() {
             <h2 id="education-heading">Education & recognition</h2>
           </div>
         </div>
-        <div className="education-grid">
+        <div className="recognition-layout">
           <article className="degree">
             <div className="degree-overview">
               <GraduationCap className="education-icon" size={32} />
@@ -247,32 +247,43 @@ export default function Home() {
               </div>
             </div>
           </article>
-          <article className="certifications">
-            <p className="eyebrow">Certifications</p>
-            {certifications.map((cert) => (
-              <div key={cert.name}>
-                <Award size={18} className="certificate-icon" />
-                <h3>{cert.name}</h3>
-                <p>{cert.issuer}</p>
-                {cert.detail && <p className="small">{cert.detail}</p>}
-                {'courses' in cert &&
-                  (
-                    cert as {
-                      courses: { group: string; items: string[] }[];
-                    }
-                  ).courses.map((cat) => (
-                    <div key={cat.group} className="cert-group">
-                      <p className="group-label">{cat.group}</p>
-                      <ul className="cert-course-list">
-                        {cat.items.map((course) => (
-                          <li key={course}>{course}</li>
+          <div className="certification-collection" aria-labelledby="certifications-heading">
+            <h3 id="certifications-heading" className="eyebrow">
+              Certifications
+            </h3>
+            <div className="certification-grid">
+              {[...certifications]
+                .sort((a, b) => Number(Boolean(b.courses)) - Number(Boolean(a.courses)))
+                .map((cert) => (
+                  <article key={cert.name} className="certification-card">
+                    <Award size={18} className="certificate-icon" aria-hidden="true" />
+                    <h4>{cert.name}</h4>
+                    <p>{cert.issuer}</p>
+                    {cert.detail && <p className="small">{cert.detail}</p>}
+                    {cert.courses && (
+                      <details className="certificate-details">
+                        <summary>
+                          View{' '}
+                          {cert.courses.reduce((total, group) => total + group.items.length, 0)}{' '}
+                          certificates
+                          <span className="sr-only"> in {cert.name}</span>
+                        </summary>
+                        {cert.courses.map((cat) => (
+                          <div key={cat.group} className="cert-group">
+                            <p className="group-label">{cat.group}</p>
+                            <ul className="cert-course-list">
+                              {cat.items.map((course) => (
+                                <li key={course}>{course}</li>
+                              ))}
+                            </ul>
+                          </div>
                         ))}
-                      </ul>
-                    </div>
-                  ))}
-              </div>
-            ))}
-          </article>
+                      </details>
+                    )}
+                  </article>
+                ))}
+            </div>
+          </div>
         </div>
       </section>
       <section id="contact" className="contact-section" aria-labelledby="contact-heading">

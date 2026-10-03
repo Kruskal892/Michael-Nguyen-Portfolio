@@ -338,6 +338,21 @@ export const education = {
 };
 export const certifications = [
   {
+    name: 'HackerRank Certifications',
+    issuer: 'HackerRank',
+    detail: 'October 2026',
+    courses: [
+      {
+        group: 'Backend',
+        items: ['Node.js (Basic)', 'REST API (Intermediate)', 'SQL (Basic)'],
+      },
+      {
+        group: 'Frontend',
+        items: ['JavaScript (Intermediate)', 'React (Basic)', 'CSS (Basic)'],
+      },
+    ],
+  },
+  {
     name: 'English Language Certificate — C1 Level',
     issuer: 'Hanoi University (HANU)',
     detail: 'Issued December 2024',

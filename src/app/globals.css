@@ -3971,3 +3971,109 @@ body {
     transform: rotateX(-24deg) rotateY(35deg) rotateZ(12deg);
   }
 }
+
+/* Education stays compact while certificate collections grow independently. */
+.recognition-layout {
+  display: grid;
+  gap: 28px;
+}
+.recognition-layout .degree {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 0.8fr);
+  align-items: start;
+  gap: 28px;
+  min-height: 0;
+  padding: 28px;
+}
+.recognition-layout .degree-coursework,
+.recognition-layout .degree-awards {
+  border-top: 0;
+  border-left: 1px solid var(--line);
+  padding: 0 0 0 24px;
+}
+.recognition-layout .degree .education-icon {
+  margin-bottom: 14px;
+}
+.recognition-layout .degree-course-list {
+  grid-template-columns: 1fr;
+}
+.certification-collection > .eyebrow {
+  margin-bottom: 14px;
+}
+.certification-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+}
+.certification-card {
+  position: relative;
+  min-width: 0;
+  padding: 24px 24px 24px 54px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.certification-card .certificate-icon {
+  top: 26px;
+  left: 24px;
+}
+.certification-card h4 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+  margin-bottom: 5px;
+}
+.certification-card > p {
+  font-size: 11px;
+  color: var(--muted);
+}
+.certification-card .small {
+  font-size: 10px;
+  margin-top: 5px;
+}
+.certificate-details {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+  padding-top: 12px;
+}
+.certificate-details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 12px;
+  width: fit-content;
+}
+.certificate-details summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+@media (max-width: 900px) {
+  .recognition-layout .degree {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .recognition-layout .degree-awards {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 16px 0 0;
+  }
+}
+@media (max-width: 600px) {
+  .recognition-layout .degree,
+  .certification-grid {
+    grid-template-columns: 1fr;
+  }
+  .recognition-layout .degree {
+    padding: 22px;
+    gap: 20px;
+  }
+  .recognition-layout .degree-coursework {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 16px 0 0;
+  }
+  .certification-card .cert-course-list {
+    grid-template-columns: 1fr;
+  }
+}
